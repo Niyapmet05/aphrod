@@ -1,12 +1,15 @@
-const http = require('http');
-const port = process.env.PORT || 3000
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.end('<h1>Hello World</h1>');
-});
+import express from 'express';
+import bodyParser from 'body-parser';
 
-server.listen(port,() => {
-  console.log(`Server running at port `+port);
-});
+const app = express();
+
+app.use(bodyParser.json());
+
+app.get('/',(req,res) => {
+    res.send("Hello Aphrodis! This is the start")
+})
+
+app.listen(3000,() => {
+    console.log(`app is listening to port 3000`);
+})
